@@ -28,7 +28,7 @@ public class ItemsSpawner : MonoBehaviour
         {
             nextSpawn = Time.deltaTime + spawnRateGood;
             randX = Random.Range(-6f, 6f);
-            randY = Random.Range(-6f, 6f);
+            randY = Random.Range(-5f, 5f);
             whereToSpawn = new Vector2(randX, randY);
             Instantiate(spawn, whereToSpawn, Quaternion.identity);
             timer = 0f;
