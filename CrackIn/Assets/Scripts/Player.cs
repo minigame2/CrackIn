@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5.0f;
     public float xMin = 3.0f, xMax = 5.0f;
 
+    private Transform mytransform;
+
     // Use this for initialization
     void Start()
     {
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        //MoveToWater();
     }
 
     private void Move()
@@ -26,7 +29,17 @@ public class Player : MonoBehaviour
         var deltaX = Input.GetAxis(AXISHORIZONTAL) * Time.deltaTime * moveSpeed;
         var newPosX = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
 
-        transform.position = new Vector2(newPosX, transform.position.y);
+        Debug.Log("delta time" + Time.deltaTime);
+        transform.position = new Vector3(newPosX, transform.position.y, 1*Time.deltaTime*100);
+    }
+
+    private void MoveToWater()
+    {
+        Debug.Log("z delta: " + transform.position.z + "delta time" + Time.deltaTime);
+        float tmp = transform.position.z * Time.deltaTime;
+
+        transform.position = Vector3.forward;
+        Debug.Log("new Vector: " + transform.position);
     }
 }
 
